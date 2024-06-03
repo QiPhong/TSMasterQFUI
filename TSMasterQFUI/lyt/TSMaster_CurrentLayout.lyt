@@ -1,0 +1,245 @@
+﻿[TSMaster]
+DebugMode=0
+DisableResize=0
+LogVerbose=6
+Bounds=0,0,1936,1056
+Maximized=1
+AutoGenConstDef=0
+AutoGenDBConstDef=0
+DisableCrashDialog=0
+UseOutputDbg=1
+SelTxSgn=1
+DisplayHex=1
+DisplaySym=1
+Skin=
+SkinPalette=
+ColorfulMDI=0
+DelConfOnFormDel=1
+AutoSaveBeforeRun=0
+AutoCopyDBToLocal=0
+CustomFont=
+TraceFont=
+AutoHandleFlexRayUB=1
+AutoSavePrj=0
+DelHistoryConfOnSave=1
+ShowTabGroups=1
+Magnetic=1
+DisableToast=0
+
+[OnlineReplay]
+CANCount=0
+
+[MDIInstances]
+TfrmSystemMsgs=1
+TfrmGraphics=0
+TfrmCANStatistics=0
+TfrmCANDatabase=0
+TfrmHardware=0
+TfrmLogging=0
+TfrmPlayback=0
+TfrmCANFDTrace=0
+TfrmCANFDTransmit=0
+TfrmLINTrace=0
+TfrmLINTransmit=0
+TfrmLINDatabase=0
+TfrmChannelMapping=0
+TfrmCCodeEditor=6
+TfrmSettings=0
+TfrmCANRBS=0
+TfrmMPLibrary=0
+TfrmSystemVarMgmt=0
+TfrmMeasurementSetup=0
+TfrmMeasurementDataFilter=0
+TfrmLINRBS=0
+TfrmTSAppHost=0
+TfrmAutomotiveFileConverter=0
+TfrmSignalMapping=0
+TfrmSymbolValue=0
+TfrmSTIM=0
+TfrmFormDocker=0
+TfrmNumeric=0
+TfrmAppManager=0
+TfrmProjectSettings=0
+TfrmSignalTester=0
+TfrmMsgTrace=0
+TfrmPanel=2
+TfrmToolboxBuilder=1
+TfrmTSForm=0
+TfrmPythonCodeEditor=0
+TfrmFlexRayDatabase=0
+TfrmFlexRayTrace=0
+TfrmFlexRayTransmit=0
+TfrmFlexRayRBS=0
+TfrmFlexRayClusterMonitor=0
+TfrmEthernetDatabase=0
+TfrmEthernetTrace=0
+TfrmEthernetTransmit=0
+TfrmEthernetPackageBuilder=0
+TfrmTCPIPStack=0
+TfrmBasePluginSingle.TfrmLicenseClient=0
+TfrmTsRPC=0
+
+[Pg0]
+Count=2
+HiddenCount=6
+f0=TfrmPanel,0,0,7,1392,832,88,79,1136,523,1
+f1=TfrmCCodeEditor,5,-151,15,1918,824,176,159,3090,1054,1
+h0=TfrmSystemMsgs,0,0,17,1271,817,0,0,1549,350,1
+f2=TfrmCCodeEditor,5,841,112,1918,824,176,159,3090,1054,1
+h1=TfrmTSForm,0,320,168,946,543,147,132,913,543,1
+h2=TfrmToolboxBuilder,0,118,28,1136,815,118,106,1136,815,1
+f3=TfrmCCodeEditor,5,416,6,1918,831,176,159,3090,1054,1
+h3=TfrmCCodeEditor,0,0,5,1918,831,176,159,3090,1054,1
+h4=TfrmPanel,0,57,29,1200,792,88,79,1136,523,1
+h5=TfrmPanel,1,-222,306,1440,792,88,79,1136,523,1
+
+[RTL_Form_Position_MDI]
+TfrmSystemMsgs=0,17,1271,834
+CCodeEditor=26,26,1070,730
+PanelOptions=0,7,1392,839
+TfrmToolboxBuilder=104,104,1050,861
+CCodeEditor1=78,78,1122,782
+CCodeEditor2=130,130,1174,834
+CCodeEditor3=182,182,1226,886
+CCodeEditor4=234,234,1278,938
+CCodeEditor5=-151,15,1767,839
+PanelOptions1=-222,306,1218,1098
+
+[RTL_Form_Position]
+TfrmTSMaster_0=-8,-8,1928,1048
+TfrmAppManager=634,378,2566,1525
+TfrmSystemVarMgmt=559,146,1361,893
+
+[PageLayouts]
+DisableResize=0
+Tabbed=0
+PageCnt=1
+ActiveIdx=0
+Pg0=Workspace
+ScreenWidth=1920
+ScreenHeight=1080
+MainBounds=-8,-8,1928,1048
+PixelsPerInch=96
+AppLeftP=-8
+AppTopP=-8
+
+[MeasurementController]
+MCount=11
+M0=0,1,131,-1,0,TfrmSystemMsgs,系统消息
+M1=0,1,146,-1,1,TfrmCCodeEditor,C 代码编辑器 [CCode7981]
+M2=0,1,155,-1,2,TfrmPanel,Panel 416
+M3=0,1,188,-1,3,TfrmToolboxBuilder,同星工具箱设计开发环境
+M4=-1,1,189,-1,4,TfrmTSForm,已删除: TSForm
+M5=1,1,146,-1,5,TfrmCCodeEditor,C 代码编辑器 [CCode7556]
+M6=2,1,146,-1,6,TfrmCCodeEditor,C 代码编辑器 [CCode680]
+M7=3,1,146,-1,7,TfrmCCodeEditor,C 代码编辑器 [CCode6882]
+M8=4,1,146,-1,8,TfrmCCodeEditor,C 代码编辑器 [CCode517]
+M9=5,1,146,-1,9,TfrmCCodeEditor,C 代码编辑器 [CCode2727]
+M10=1,1,155,-1,10,TfrmPanel,Panel 3666
+
+[SystemMsgOptions]
+MaxLines=100000
+UICommon=0,-1,0,0,z7XNs8/7z6I_,100,396,1413848951141335983
+UIFilter=
+
+[ChannelMappings]
+CANChnCount=1
+CAN0=0,0,1,0,0,-1,0,500,2000,TSMaster,default
+CAN1=1,0,1,0,1,-1,0,250,2000,TSMaster,default
+CAN2=2,0,3,0,2,11,0,500,2000,TSMaster,
+CAN3=3,0,3,0,3,11,0,500,2000,TSMaster,
+LINChnCount=0
+FlexRayChnCount=0
+FlexRay0=0,2,3,0,0,15,0,10000,2000,TSMaster,TC1034
+FlexRay1=1,2,3,0,1,15,0,10000,2000,TSMaster,TC1034
+EthernetChnCount=0
+Ethernet0=0,3,11,0,0,27,0,500,2000,TSMaster,
+AIOChnCount=0
+DIOChnCount=0
+RIOChnCount=0
+GPSChnCount=0
+
+[UserVariables]
+Count=0
+
+[PluginManager]
+ExternalCount=0
+
+[BusStatistics]
+Enabled=1
+
+[app_conn_callback_before_connect]
+CAN RBS=100
+Measurement Controller=100
+J1939 TP=100
+FlexRay RBS=100
+Channel Selection=100
+Signal Server=100
+MDI Manager=100
+FlexRay RBS Controller=100
+TSMaster Main Application=100
+
+[app_conn_callback_after_connect]
+FlexRay RBS=100
+MDI Manager=100
+Measurement Comment Manager=100
+J1939 TP=100
+LIN RBS=100
+Ribbon Manager=100
+CAN RBS=100
+MP Library Manager=100
+TSMaster Main Application=100
+
+[app_conn_callback_before_disconnect]
+J1939 TP=100
+Signal Server=100
+LIN RBS=100
+MDI Manager=100
+
+[app_conn_callback_after_disconnect]
+Ribbon Manager=100
+Measurement Controller=100
+Bus Log Engine=100
+CAN RBS=100
+FlexRay RBS=100
+MP Library Manager=100
+TSMaster Main Application=100
+MDI Manager=100
+
+[app_hw_selector_conf]
+FActiveWirelessOBD=
+FEnableTSWirelessOBD=0
+DeviceCount=0
+
+[TfrmAppManager]
+UICommon=0,0,0,0,VFNNYXN0ZXLTptPDudzA7cb3,100,322,609112630529174551
+UIFilter=
+
+[TfrmToolboxBuilder]
+UICommon=0,-1,-1,0,zazQx7mkvt/P5MnovMa/qreiu7e+sw__,100,549,3434557676811992707
+UIFilter=
+ExportsCount=0
+
+[ToolboxConf]
+FormTypeCount=0
+FT0=_45345
+FC0=0
+
+[SysVarMgmt]
+UICommon=0,0,0,0,x+vRodTx0ru49s+1zbOx5MG/0tS52MGqtbHHsL/YvP4_,100,262,5672002665716243259
+UIFilter=
+
+[TsRPC]
+Actv=1
+SizeBytes=1048576
+
+[TsRPCIP]
+Enabled=0
+Port=2809
+Proto=0
+FileCnt=0
+
+[TTsSimManager]
+FullSim=0
+Speed=1
+Step=0.1

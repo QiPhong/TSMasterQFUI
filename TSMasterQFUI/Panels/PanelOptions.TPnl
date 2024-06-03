@@ -1,0 +1,14 @@
+﻿[PanelSettings]
+PanelLayout=2
+PanelName=Panel 416
+DisplayVarLinks=0
+DisplayVarNames=1
+
+[FormSettings]
+Width=640
+Height=480
+Title=Panel 416
+Backcolor=16777215
+
+[ControlNames]
+ControlsCount=0

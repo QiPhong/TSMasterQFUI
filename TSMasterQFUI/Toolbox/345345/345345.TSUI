@@ -1,0 +1,46 @@
+object frmVCLFormDesigner: TfrmVCLFormDesigner
+  Left = 392
+  Top = 392
+  ActiveControl = ComboBox1
+  Caption = 
+    #21516#26143#24037#20855#31665#31383#20307#35774#35745#22120' - ComboBox1: TComboBox; '#20301#32622' (400, 432, 688, 472); '#23485': 2' +
+    '88, '#39640': 40 [*345345.TSUI]'
+  ClientHeight = 1004
+  ClientWidth = 1572
+  Color = clBtnFace
+  DoubleBuffered = True
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -24
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  KeyPreview = True
+  Position = poDesigned
+  Visible = True
+  OnClick = FormClick
+  OnClose = FormClose
+  OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
+  OnKeyDown = FormKeyDown
+  OnResize = FormResize
+  OnShow = FormShow
+  PixelsPerInch = 192
+  TextHeight = 32
+  object ComboBox1: TComboBox
+    Left = 400
+    Top = 432
+    Width = 288
+    Height = 40
+    Cursor = crArrow
+    Margins.Left = 6
+    Margins.Top = 6
+    Margins.Right = 6
+    Margins.Bottom = 6
+    Style = csDropDownList
+    TabOrder = 0
+    Items.Strings = (
+      #22914'4345435'
+      '6867sdfssdf'
+      'sdfsdf')
+  end
+end
