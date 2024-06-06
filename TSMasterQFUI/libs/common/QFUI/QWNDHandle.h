@@ -460,10 +460,11 @@ QWMange* AgentWndDLL::CreateQWMange()
 #include "QFButton.h"
 #include "QFLineChart.h"
 #include "QFTabs.h"
+#include "QF3DCtrl.h"
 QWND* AgentWndDLL::CreateQWND(const char* name,HDC dc,const QRect& rf)
 {
 
-    if(m_hm){
+   if(m_hm){
         typedef QWND* (*CQWND)(const char*,HDC , QRect  );
         CQWND cwnd = (CQWND)GetProcAddress(m_hm,"CreateQWND");
         if(NULL == cwnd){
@@ -476,39 +477,42 @@ QWND* AgentWndDLL::CreateQWND(const char* name,HDC dc,const QRect& rf)
             QWNDHANDLE::wdc = GetDC(hwnd);
 
         DLLImportQWND*dq = NULL;
-        if ("QFButton" == std::string(name)) {
+        std::string cn = name;
+        if ("QFButton" == cn) {
             dq = new QButton(QWNDHANDLE::wdc ,rf);
 
         }
-        else if ("QFStaticText" == std::string(name)) {
+        else if ("QFStaticText" == cn) {
             
 
         }
-        else if ("QFReportForm" == std::string(name)) {
+        else if ("QFReportForm" == cn) {
             dq = new QReportForm(QWNDHANDLE::wdc ,rf);
         }
-        else if ("QFPictureBox" == std::string(name)) {
+        else if ("QFPictureBox" == cn) {
             dq = new QPictureBox(QWNDHANDLE::wdc ,rf);
         }
-        else if ("QFEdit" == std::string(name)) {
+        else if ("QFEdit" == cn) {
             dq = new QEdit(QWNDHANDLE::wdc ,rf);
         }
-        else if ("QFPanelDial" == std::string(name)) {
+        else if ("QFPanelDial" == cn) {
 
         }
-        else if ("QFProgressBarCar" == std::string(name)) {
+        else if ("QFProgressBarCar" == cn) {
             dq = new QProgressBarCar(QWNDHANDLE::wdc ,rf);
         }
-        else if ("QFLineChart" == std::string(name)) {
+        else if ("QFLineChart" == cn) {
             dq = new QLineChart(QWNDHANDLE::wdc, rf);
         }
-        else if ("QFTabs" == std::string(name)) {
+        else if ("QFTabs" == cn) {
             dq = new QTabs(QWNDHANDLE::wdc, rf);
         }
 
-        if(NULL == dq){
-            DebugOut("AgentWndDLL::CreateQWND ：创建控件失败,可能 《%s》控件不支持的类型 ",name);
-            return NULL;
+        if ("QF3D" == cn.substr(0, 4)) {
+            if ("QF3DCtrl" == cn) {
+                dq = new Q3DCtrl(QWNDHANDLE::wdc, rf);
+            }
+        
         }
  
         QWND*p = cwnd(name,QWNDHANDLE::wdc ,rf);

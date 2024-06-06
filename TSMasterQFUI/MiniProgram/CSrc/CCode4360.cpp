@@ -133,7 +133,7 @@ void on_start_NewOn_Start1(void) { try { // 程序启动事件
   QTabs* qt = (QTabs*)QFUSE::CreateQWND("QFTabs", QRect(10, 10, 800, 700));
     QFUSE::AttachCtrl(qt);
        //给标签控件添加五个标签
-    for (int i = -1; ++i < 5;) {
+    for (int i = -1; ++i < 6;) {
         qt->AddTab((L"测试"+std::to_wstring(i)).c_str(), (cfPath+L"libs\\common\\QFUI\\Tabico.png").c_str());
 
     }
@@ -150,6 +150,9 @@ void on_start_NewOn_Start1(void) { try { // 程序启动事件
     //把进度条控件加入第5个标签页
     qt->AttachCtrl(qpbc,4);    
 
+    Q3DCtrl* q3dc = (Q3DCtrl*)QFUSE::CreateQWND("QF3DCtrl", QRect(10, 10, 800, 700));
+
+    qt->AttachCtrl(q3dc, 5);
 
 
 } catch (...) { log_nok("CRASH detected"); app.terminate_application(); }}
