@@ -512,7 +512,9 @@ QWND* AgentWndDLL::CreateQWND(const char* name,HDC dc,const QRect& rf)
             if ("QF3DCtrl" == cn) {
                 dq = new Q3DCtrl(QWNDHANDLE::wdc, rf);
             }
-        
+            else if ("QF3DGraph" == cn) {
+                dq = new QGraph3D(QWNDHANDLE::wdc, rf);
+            }
         }
  
         QWND*p = cwnd(name,QWNDHANDLE::wdc ,rf);

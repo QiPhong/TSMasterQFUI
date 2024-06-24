@@ -23,6 +23,79 @@ TMPVarDouble Rat;
 
     log("******************:%p",sender);
   }
+
+   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//3D渲染函数相关函数
+bool DefineDomain(float x, float y)
+{
+    //定义域判断，认为所有的点都有定义域，直接返回true
+    return true;
+}
+//取定义域Y值
+int DefineDomainYValue(float x, float* yarr)
+{
+    //所有点都有定义y的取值就去区间边界
+    yarr[0] = 8.0;
+    yarr[1] = -8.0;
+    return 2;
+
+}
+//取定义域X值
+int DefineDomainXValue(float y, float* xarr)
+{
+    //所有点都有定义x的取值就去区间边界
+    xarr[0] = 8.0;
+    xarr[1] = -8.0;
+    return 2;
+}
+bool GetZValue(float x, float y, float* z)
+{
+    if (!DefineDomain(x, y))return FALSE;
+
+    //返回指定点的z值
+    *z = sin(x) * sin(y);
+    return true;
+}
+//绘制一个上半球
+bool DefineDomain_Ball(float x, float y)
+{
+    
+    //底部定义域为圆形，有精度误差0.0001，防止圆附近取点时判断不在定义域内
+
+    //这里判断定义域
+    return 16 - x * x - y * y >= -0.0001;//
+}
+//取定义域Y值
+int DefineDomainYValue_Ball(float x, float* yarr)
+{
+    //用
+    float y1 = sqrtf(16 - x * x);
+    yarr[0] = y1;
+    if (!y1)return 1;
+    yarr[1] = -y1;
+    return 2;
+}
+//取定义域X值
+int DefineDomainXValue_Ball(float y, float* xarr)
+{
+    float x1 = sqrtf(16 - y * y);
+    xarr[0] = x1;
+    if (!x1)return 1;
+    xarr[1] = -x1;
+
+    return 2;
+}
+bool GetZValue_Ball(float x, float y, float* z)
+{
+    if (!DefineDomain(x, y))return FALSE;
+
+
+    *z = pow(abs(16 - x * x - y * y), 0.5);
+    return true;
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // CODE BLOCK END Global_Definitions 
 
 // CODE BLOCK BEGIN On_Start NewOn_Start1
@@ -150,7 +223,15 @@ void on_start_NewOn_Start1(void) { try { // 程序启动事件
     //把进度条控件加入第5个标签页
     qt->AttachCtrl(qpbc,4);    
 
-    Q3DCtrl* q3dc = (Q3DCtrl*)QFUSE::CreateQWND("QF3DCtrl", QRect(10, 10, 800, 700));
+       QGraph3D* q3dc = (QGraph3D*)QFUSE::CreateQWND("QF3DGraph", QRect(10, 10, 700, 550));
+    float xr[2] = {-8,8};
+    float yr[2] = { -8,8 };
+    q3dc->AddCurve(xr,yr, DefineDomain, DefineDomainYValue, DefineDomainXValue, GetZValue, 100, 100);
+    xr[0] = -4;
+    xr[1] =4;
+    yr[0] = -4;
+    yr[1] = 4;
+    q3dc->AddCurve(xr, yr, DefineDomain_Ball, DefineDomainYValue_Ball, DefineDomainXValue_Ball, GetZValue_Ball, 100, 100);//加入一个半球
 
     qt->AttachCtrl(q3dc, 5);
 

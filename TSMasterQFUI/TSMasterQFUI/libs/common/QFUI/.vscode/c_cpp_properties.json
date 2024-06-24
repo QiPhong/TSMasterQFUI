@@ -1,0 +1,23 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "C:\\Program Files (x86)\\TOSUN\\TSMaster\\bin\\Data\\compilers\\BCC102\\include\\windows\\crtl\\sys\\**",
+                "C:\\Program Files (x86)\\TOSUN\\TSMaster\\bin\\Data\\compilers\\BCC102\\include\\windows\\crtl\\**",
+                "C:\\Program Files (x86)\\TOSUN\\TSMaster\\bin\\Data\\compilers\\BCC102\\include\\windows\\sdk\\**",
+                "C:\\Program Files (x86)\\TOSUN\\TSMaster\\bin\\Data\\compilers\\BCC102\\include\\windows\\sdk\\gl\\**",
+                "C:\\Program Files (x86)\\TOSUN\\TSMaster\\bin\\Data\\compilers\\BCC102\\include\\windows\\sdk\\idl\\**",
+                "C:\\Program Files (x86)\\TOSUN\\TSMaster\\bin\\Data\\compilers\\BCC102\\include\\dinkumware64\\**",
+                "C:\\Program Files (x86)\\TOSUN\\TSMaster\\bin\\Data\\compilers\\BCC102\\include\\dinkumware64\\Dinkum\\threads\\**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ]
+        }
+    ],
+    "version": 4
+}

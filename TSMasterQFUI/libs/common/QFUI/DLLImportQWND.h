@@ -1,6 +1,8 @@
 #pragma once
 #include "QFUIWND.h"
 #include "QFTypes.h"
+
+typedef PVOID(*GET3DPROCADDRESS)(const char*);
 namespace QEXPORTFUNC{
     inline void* QExportFunction(HMODULE hm,const char* fName)
     {
@@ -11,6 +13,18 @@ namespace QEXPORTFUNC{
         else{
 
             DebugOut("QWMange : 导入 <%s> 函数失败",fName);
+        }
+        return pfun;
+    }
+    inline void* QExportFunction(GET3DPROCADDRESS pro, const char* fName)
+    {
+        void* pfun = (void*)pro(fName);
+        if (pfun) {
+            DebugOut("QExportFunction : 导入 <%s> 函数成功", fName);
+        }
+        else {
+
+            DebugOut("QExportFunction : 导入 <%s> 函数失败", fName);
         }
         return pfun;
     }
