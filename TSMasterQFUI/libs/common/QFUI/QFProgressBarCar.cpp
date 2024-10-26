@@ -3,7 +3,7 @@ std::function<void(QWND*, double)> QProgressBarCar::QFBCSetPercentage;
 std::function<double(QWND*)> QProgressBarCar::QFBCGetPercentage;
 std::function<void(QWND*, double)> QProgressBarCar::QFBCSetFontSize;
 std::function<void(QWND*, const wchar_t*)> QProgressBarCar::QFBCSetFontName;
-std::function<void(QWND*, int)> QProgressBarCar::QFBCSetFontColor;
+std::function<void(QWND*,unsigned int)> QProgressBarCar::QFBCSetFontColor;
 std::function<void(QWND*, bool)> QProgressBarCar::QFBCIsShowDec;
 std::function<void(QWND*, QBrush*)> QProgressBarCar::QFBCSetFillBrush;
 HMODULE QProgressBarCar::m_hm = NULL;
@@ -43,7 +43,7 @@ int QProgressBarCar::init(HMODULE hm)
         fName = "QFBCSetFontColor";
         pfun = QEXPORTFUNC::QExportFunction(hm,fName);
         if(pfun)++count;
-        QFBCSetFontColor = std::function<void(QWND*,int)>((void(*)(QWND*,int))pfun);
+        QFBCSetFontColor = std::function<void(QWND*, unsigned int)>((void(*)(QWND*, unsigned int))pfun);
 
         fName = "QFBCIsShowDec";
         pfun = QEXPORTFUNC::QExportFunction(hm,fName);
@@ -61,7 +61,7 @@ int QProgressBarCar::init(HMODULE hm)
         DebugOut("QProgressBarCar :import %d function",count);
         return count;
     }
-       return  0;
+    return 0;
 }
 
 void QProgressBarCar::SetPercentage(double rat)
@@ -85,7 +85,7 @@ void QProgressBarCar::SetFontName(const wchar_t *name)
     QFBCSetFontName(qwm,name);
 }
 
-void QProgressBarCar::SetFontColor(int colo)
+void QProgressBarCar::SetFontColor(unsigned int colo)
 {
     QFBCSetFontColor(qwm,colo);
 }

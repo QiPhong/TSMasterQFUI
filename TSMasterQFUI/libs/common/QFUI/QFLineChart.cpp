@@ -3,6 +3,7 @@ HMODULE QLineChart::m_hm =NULL;
 __QFLCADDCURVE QLineChart::QFLCAddCurve = NULL;
 __QFLCCURVEINSERTPOINT QLineChart::QFLCCurveInsertPoint = NULL;
 __INT__FUN QLineChart::DEF_FUN_NAME(SetFontSize) = NULL;
+__INT__FUN QLineChart::DEF_FUN_NAME(RemoveCurve) = NULL;
 __INT__FUN QLineChart::DEF_FUN_NAME(SetTextAlgn) = NULL;
 __INT__INT__FUN QLineChart::DEF_FUN_NAME(SetTextAlgnii) = NULL;
 __INT__FUN QLineChart::DEF_FUN_NAME(SetTextAllgn) = NULL;
@@ -21,6 +22,8 @@ __LONGLONG__FUN QLineChart::DEF_FUN_NAME(SetAttribute) = NULL;
 __WCHAR_T__INT__FUN__INT QLineChart::DEF_FUN_NAME(FindCurve) = NULL;
 __INT__ULONG__FUN QLineChart::DEF_FUN_NAME(SetCurveColor) = NULL;
 __INT__WCHAR_T__FUN QLineChart::DEF_FUN_NAME(SetCurveName) = NULL;
+__INT__BOOL__FUN QLineChart::DEF_FUN_NAME(SetCurveVisible) = NULL;
+__INT__FUN QLineChart::DEF_FUN_NAME(SetBackground) = NULL;
 
 QLineChart::QLineChart(HDC winddc, const QRect& rf) :DLLImportQWND(winddc, rf)
 {
@@ -139,6 +142,21 @@ int QLineChart::init(HMODULE hm)
         if (pfun)++count;
         DEF_FUN_NAME(SetLegFontSize) = (__INT__FUN)pfun;
 
+        fName = "QFLCSetCurveVisible";
+        pfun = QEXPORTFUNC::QExportFunction(hm, fName);
+        if (pfun)++count;
+        DEF_FUN_NAME(SetCurveVisible) = (__INT__BOOL__FUN)pfun;
+
+        fName = "QFLCRemoveCurve";
+        pfun = QEXPORTFUNC::QExportFunction(hm, fName);
+        if (pfun)++count;
+        DEF_FUN_NAME(RemoveCurve) = (__INT__FUN)pfun;
+
+        fName = "QFLCSetBackground";
+        pfun = QEXPORTFUNC::QExportFunction(hm, fName);
+        if (pfun)++count;
+        DEF_FUN_NAME(SetBackground) = (__INT__FUN)pfun;
+
         DLLImportQWND::init(hm);
         DebugOut("QLineChart :import %d function", count);
         return count;
@@ -250,5 +268,16 @@ void QLineChart::SetCurveName(int index, const wchar_t *name)
 {
     return DEF_FUN_NAME(SetCurveName)(qwm, index, name);
 }
+void QLineChart::SetCurveVisible(int index, bool isVisible)
+{
+    return DEF_FUN_NAME(SetCurveVisible)(qwm, index, isVisible);
+}
+void  QLineChart::RemoveCurve(int index)
+{
+    return DEF_FUN_NAME(RemoveCurve)(qwm, index);
 
-
+}
+void QLineChart::SetBackground(QBrush* brush)
+{
+    return DEF_FUN_NAME(SetBackground)(qwm, (int)brush);
+}

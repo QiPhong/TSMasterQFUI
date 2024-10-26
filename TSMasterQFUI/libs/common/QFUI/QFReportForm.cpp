@@ -1,8 +1,31 @@
 #include "QFReportForm.h"
+#define __FUNCTINNAME_QWRF(name) QWRF##name
+#define __FUNCTINNAME_QWRF_STR(name) "QWRF" #name
+#define __GDefineFun_QWRF(name) __GDefineFun(QReportForm,__QDefineType(name),name)
 void QReportForm::IsIsDrag(bool drag)
 {
 
     QWRFIsDrag(qwm, drag);
+}
+std::wstring QReportForm::GetTitleText(int index)
+{
+    return std::wstring(__FUNCTINNAME_QWRF(GetTitleText)(qwm,index));
+}
+int QReportForm::GetTitleWidth(int index)
+{
+    return __FUNCTINNAME_QWRF(GetTitleWidth)(qwm, index);
+}
+int QReportForm::RemovTitle(int index)
+{
+    return __FUNCTINNAME_QWRF(RemovTitle)(qwm,index);
+}
+int QReportForm::SetTitle(const std::wstring& w, INT wdth, int index)
+{
+    return __FUNCTINNAME_QWRF(SetTitle)(qwm, w.c_str(), wdth, index);
+}
+const wchar_t* QReportForm::GetCellText(int iRd, int iUnit)
+{
+    return __FUNCTINNAME_QWRF(GetCellText)(qwm, iRd, iUnit);
 }
 int QReportForm::InsertRecorder(const std::wstring& w, int index)
 {
@@ -13,7 +36,7 @@ int QReportForm::RemoveRecorder(int index)
     return QWRFRemoveRecorder(qwm, index);
 
 }
-int QReportForm::SelectItemIndex()
+ int QReportForm::SelectItemIndex()
 {
     return QWRFSelectItemIndex(qwm);
 }
@@ -21,11 +44,11 @@ int QReportForm::SetRecorderText(int iRd, int iUnit, std::wstring context)
 {
     return QWRFSetRecorderText(qwm, iRd, iUnit, context.c_str());
 }
-int QReportForm::GetRecorderCount()const
+ int QReportForm::GetRecorderCount()const
 {
     return QWRFGetRecorderCount(qwm);
 }
-int QReportForm::GetTitleCount()const
+ int QReportForm::GetTitleCount()const
 {
     return QWRFGetTitleCount(qwm);
 }
@@ -116,19 +139,26 @@ QWRFSETBKBRUSH_FUN   QReportForm::QWRFSetBKBrush = NULL;
 QWRFGETBKBRUSH_FUN   QReportForm::QWRFGetBKBrush = NULL;
 QWRFINSERTTITLE_FUN QReportForm::QWRFInsertTitle = NULL;
 QWRFSETTITLEHEIGHT_FUN QReportForm::QWRFSetTitleHeight = NULL;
-
-
-
-
+__GDefineFun_QWRF(QWRFGetTitleText);
+__GDefineFun_QWRF(QWRFGetTitleWidth);
+__GDefineFun_QWRF(QWRFRemovTitle);
+__GDefineFun_QWRF(QWRFSetTitle);
+__GDefineFun_QWRF(QWRFGetCellText);
 
 int QReportForm::init(HMODULE hm)
 {
     if (!m_hm) {
+        m_hm = hm;
         int count = 0;
         const char* fName = "QWRFIsDrag";
         void* pfun = QEXPORTFUNC::QExportFunction(hm, fName);
         if (pfun)++count;
         QWRFIsDrag = (QWRFISDRAG_FUN)pfun;
+
+        fName = __FUNCTINNAME_QWRF_STR(GetCellText);
+        pfun = QEXPORTFUNC::QExportFunction(hm, fName);
+        if (pfun)++count;
+        QEXPORTFUNC::__FUNADDRESS(__FUNCTINNAME_QWRF(GetCellText), pfun);
 
         fName = "QWRFInsertRecorder";
         pfun = QEXPORTFUNC::QExportFunction(hm, fName);
@@ -215,6 +245,25 @@ int QReportForm::init(HMODULE hm)
         if (pfun)++count;
         QWRFSetTitleHeight = (QWRFSETTITLEHEIGHT_FUN)pfun;
 
+        fName = __FUNCTINNAME_QWRF_STR(GetTitleText);
+        pfun = QEXPORTFUNC::QExportFunction(hm, fName);
+        if (pfun)++count;
+        QEXPORTFUNC::__FUNADDRESS(__FUNCTINNAME_QWRF(GetTitleText), pfun);
+
+        fName = __FUNCTINNAME_QWRF_STR(GetTitleWidth);
+        pfun = QEXPORTFUNC::QExportFunction(hm, fName);
+        if (pfun)++count;
+        QEXPORTFUNC::__FUNADDRESS(__FUNCTINNAME_QWRF(GetTitleWidth), pfun);
+
+        fName = __FUNCTINNAME_QWRF_STR(RemovTitle);
+        pfun = QEXPORTFUNC::QExportFunction(hm, fName);
+        if (pfun)++count;
+        QEXPORTFUNC::__FUNADDRESS(__FUNCTINNAME_QWRF(RemovTitle), pfun);
+
+        fName = __FUNCTINNAME_QWRF_STR(SetTitle);
+        pfun = QEXPORTFUNC::QExportFunction(hm, fName);
+        if (pfun)++count;
+        QEXPORTFUNC::__FUNADDRESS(__FUNCTINNAME_QWRF(SetTitle), pfun);
 
 
         DLLImportQWND::init(hm);

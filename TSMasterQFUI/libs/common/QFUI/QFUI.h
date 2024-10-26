@@ -36,7 +36,7 @@
 #include "QFEdit.h"
 #include "QFProgressBarCar.h"
 #include "QFButton.h"
-
+#include "QFXmlRelolver.h"
 
 
 

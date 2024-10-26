@@ -130,16 +130,11 @@ DLLEXPORT s32 __stdcall finalize_miniprogram(void)
 
 // MP library functions definition
 
-// Variables defintions
-extern TMPVarDouble Rat;
-
 // Retrieve TSMP abilities
 typedef s32 (__stdcall* TRegTSMasterFunction)(const void* AObj, const char* AFuncType, const char* AFuncName, const char* AData, const void* AFuncPointer, const char* ADescription);
 extern void step(void);
-extern void on_start_NewOn_Start1(void);
-extern void on_stop_NewOn_Stop1(void);
 DLLEXPORT s32 __stdcall retrieve_mp_abilities(const void* AObj, const TRegTSMasterFunction AReg) {
-  #define TSMASTER_VERSION "2024.9.19.1184"
+  #define TSMASTER_VERSION "2024.6.5.1124"
   if (!AReg(AObj, "check_mp_internal", "version", TSMASTER_VERSION, 0, "")) return -1;
   if (!AReg(AObj, "check_mp_internal", "struct_size", "struct_size_app", (void *)sizeof(TTSMasterConfiguration), "")) return -1;
   if (!AReg(AObj, "check_mp_internal", "struct_size", "struct_size_tcan", (void *)sizeof(TCAN), "")) return -1;
@@ -158,10 +153,7 @@ DLLEXPORT s32 __stdcall retrieve_mp_abilities(const void* AObj, const TRegTSMast
   if (!AReg(AObj, "check_mp_internal", "auto_start", "0", 0, "")) return -1;
   if (!AReg(AObj, "check_mp_internal", "addr_conf", "app", &app, "")) return -1;
   if (!AReg(AObj, "step_function", "step", "5", reinterpret_cast<const void*>(&step), "")) return -1;
-  if (!AReg(AObj, "var", "Rat", "1,NTAuMA__,", reinterpret_cast<const void*>(&Rat), "")) return -1;
-  if (!AReg(AObj, "on_start_callback", "on_start_NewOn_Start1", "", reinterpret_cast<const void*>(&on_start_NewOn_Start1), "")) return -1;
-  if (!AReg(AObj, "on_stop_callback", "on_stop_NewOn_Stop1", "", reinterpret_cast<const void*>(&on_stop_NewOn_Stop1), "")) return -1;
   // MP library functions
 
-  return 4;
+  return 1;
 }

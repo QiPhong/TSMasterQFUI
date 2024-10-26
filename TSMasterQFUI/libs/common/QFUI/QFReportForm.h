@@ -48,13 +48,17 @@ typedef int (*QWRFSELECTITEMINDEX_FUN)(QWND*);
 typedef int (*QWRFREMOVERECORDER_FUN)(QWND*,int);
 typedef int (*QWRFINSERTRECORDER_FUN)(QWND*,const wchar_t*,int);
 typedef void (*QWRFISDRAG_FUN)(QWND*,bool);
+typedef const wchar_t* (*__FunTypeDef(QWRFGetTitleText))(QWND* , int );
+typedef int (*__FunTypeDef(QWRFGetTitleWidth))(QWND*, int);
+typedef int (*__FunTypeDef(QWRFRemovTitle))(QWND*, int);
+typedef int (*__FunTypeDef(QWRFSetTitle))(QWND*, const wchar_t* , INT , int );
 
-
+typedef const wchar_t* (*__FunTypeDef(QWRFGetCellText))(QWND*, int, int);
 
 
 class QReportForm:public DLLImportQWND
 {
-    public:
+   
     static HMODULE m_hm;
     static QWRFISDRAG_FUN QWRFIsDrag;
     static QWRFINSERTRECORDER_FUN QWRFInsertRecorder;
@@ -75,13 +79,14 @@ class QReportForm:public DLLImportQWND
     static QWRFINSERTTITLE_FUN QWRFInsertTitle;
     static QWRFSETTITLEHEIGHT_FUN QWRFSetTitleHeight;
 
+    __MembersDef(QWRFGetTitleText);
+    __MembersDef(QWRFGetTitleWidth);
+    __MembersDef(QWRFRemovTitle);
+    __MembersDef(QWRFSetTitle);
+    __MembersDef(QWRFGetCellText);
 
-
-
-
-
-    
-    int InsertRecorder(const std::wstring&  w=L"",int index=-1);//插入索引0为插入到最前面，超出记录最大数无效
+public:
+    int InsertRecorder(const std::wstring& w=L"",int index=-1);//插入索引0为插入到最前面，超出记录最大数无效
     int RemoveRecorder(int index);
     int SelectItemIndex();
     /**
@@ -129,7 +134,11 @@ class QReportForm:public DLLImportQWND
 
     virtual int init(HMODULE hm);
     void IsIsDrag(bool drag);
-    
+    std::wstring GetTitleText(int index); //获取字段文本
+    int GetTitleWidth(int index);//获取字段宽度
+    int RemovTitle(int index);
+    int SetTitle(const std::wstring& w, INT wdth, int index);
+    const wchar_t* GetCellText(int iRd, int iUnit);
 };
 
 /*

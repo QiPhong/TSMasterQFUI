@@ -38,6 +38,18 @@ SETSIZE DLLImportQWND::SetSize_FUN = NULL;
 CONTAINS DLLImportQWND::Contains_FUN = NULL;
 GETRECT DLLImportQWND::GetRect_FUN = NULL;
 VOID_QWND DLLImportQWND::DeleteQWMage_FUN = NULL;
+
+SETQWNDNAME DLLImportQWND::SetQWNDName_FUN = NULL;
+TRANSFERMESSAGE DLLImportQWND::TransferMessage_FUN = NULL;
+GETQWNDNAME DLLImportQWND::GetQWNDName_FUN = NULL;
+
+
+
+
+
+
+
+
 DLLImportQWND::DLLImportQWND(HDC winddc, const QRect& rf)
 {
 
@@ -212,7 +224,20 @@ inline void DLLImportQWND::LoadThisCtrlCursor()
 
     LoadThisCtrlCursor_FUN(qwm);
 }
-inline void  DLLImportQWND::SetHostHand(HWND hwnd)
+QDWORD DLLImportQWND::TransferMessage(QDWORD msgID, QDWORD LParam, QDWORD RParam, QDWORD AddParam)
+{
+    return TransferMessage_FUN(qwm, msgID, LParam, RParam, AddParam);
+}
+void DLLImportQWND::SetQWNDName(const char* name)
+{
+    return SetQWNDName_FUN(qwm, name);
+}
+
+std::string DLLImportQWND::GetQWNDName()
+{
+    return std::string(GetQWNDName_FUN(qwm));
+}
+void  DLLImportQWND::SetHostHand(HWND hwnd)
 {
     SetHostHwnd_FUN(qwm, hwnd);
 }
@@ -262,15 +287,15 @@ int DLLImportQWND::init(HMODULE hm)
         if (KeyDownFun)++count;
         KeyUpFun = (KEYMSGFUN)GetProcAddress(hm, "KeyUp");
         if (KeyUpFun)++count;
-        void* pfun =(void*) GetProcAddress(hm, "IsVisual");
+        void* pfun = (void*)GetProcAddress(hm, "IsVisual");
         if (pfun)++count;
         isVisual_FUN = (ISBoolean)pfun;
 
-        pfun =(void*) GetProcAddress(hm, "IsEnable");
+        pfun = (void*)GetProcAddress(hm, "IsEnable");
         if (pfun)++count;
         isEnable_FUN = (ISBoolean)pfun;
 
-        pfun =(void*) GetProcAddress(hm, "SetHostHwnd");
+        pfun = (void*)GetProcAddress(hm, "SetHostHwnd");
         if (pfun)++count;
         SetHostHwnd_FUN = (SETHANDLE)pfun;
 
@@ -278,7 +303,7 @@ int DLLImportQWND::init(HMODULE hm)
         if (pfun)++count;
         SetCursor_FUN = (QSERCURSOR)pfun;
 
-        pfun =(void*) GetProcAddress(hm, "QWDGetCursor");
+        pfun = (void*)GetProcAddress(hm, "QWDGetCursor");
         if (pfun)++count;
         GetCursor_FUN = (QGERCURSOR)pfun;
 
@@ -286,7 +311,7 @@ int DLLImportQWND::init(HMODULE hm)
         if (pfun)++count;
         LoadThisCtrlCursor_FUN = (VOID_QWND)pfun;
 
-        pfun =(void*) GetProcAddress(hm, "Refresh");
+        pfun = (void*)GetProcAddress(hm, "Refresh");
         if (pfun)++count;
         Refresh_FUN = (VOID_QWND)pfun;
 
@@ -298,7 +323,7 @@ int DLLImportQWND::init(HMODULE hm)
         if (pfun)++count;
         Reconstruct_FUN = (RECONSTRUCT)pfun;
 
-        pfun =(void*) GetProcAddress(hm, "SetLocation");
+        pfun = (void*)GetProcAddress(hm, "SetLocation");
         if (pfun)++count;
         SetLocation_FUN = (SETLOCATION)pfun;
 
@@ -306,7 +331,7 @@ int DLLImportQWND::init(HMODULE hm)
         if (pfun)++count;
         SetSize_FUN = (SETSIZE)pfun;
 
-        pfun =(void*) GetProcAddress(hm, "Contains");
+        pfun = (void*)GetProcAddress(hm, "Contains");
         if (pfun)++count;
         Contains_FUN = (CONTAINS)pfun;
 
@@ -318,10 +343,17 @@ int DLLImportQWND::init(HMODULE hm)
         if (pfun)++count;
         DeleteQWMage_FUN = (VOID_QWND)pfun;
 
+        pfun = (void*)GetProcAddress(hm, "SetQWNDName");
+        if (pfun)++count;
+        SetQWNDName_FUN = (SETQWNDNAME)pfun;
 
+        pfun = (void*)GetProcAddress(hm, "TransferMessage");
+        if (pfun)++count;
+        TransferMessage_FUN = (TRANSFERMESSAGE)pfun;
 
-
-
+        pfun = (void*)GetProcAddress(hm, "GetQWNDName");
+        if (pfun)++count;
+        GetQWNDName_FUN = (GETQWNDNAME)pfun;
 
 
 

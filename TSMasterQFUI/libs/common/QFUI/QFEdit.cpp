@@ -1,4 +1,7 @@
 #include "QFEdit.h"
+#define __FUNCTINNAME_QED(name) QED##name
+#define __FUNCTINNAME_QED_STR(name) "QED" #name
+#define __GDefineFun_QED(name) __GDefineFun(QEdit,__QDefineType(name),name)
 HMODULE QEdit::m_hm;
 QEDSETBKIMAGETRANSPARENCY QEdit::QEDSetBKImageTransparency;
 QEDLOADPICTURE QEdit::QEDLoadPicture;
@@ -9,8 +12,13 @@ QEDGETTEXT QEdit::QEDGetText;
 QEDSETFONTNAME QEdit::QEDSetFontName;
 QEDSETFONTSIZE QEdit::QEDSetFontSize;
 QEDSETFONTBRUSH QEdit::QEDSetFontBrush;
+__GDefineFun_QED(QEDSetChangeEvent);
 
 
+void QEdit::SetChangeEvent(QEDIT_CHANGE_EVENT even, int param)
+{
+    return __FUNCTINNAME_QED(SetChangeEvent)(qwm,even,param);
+}
 
 int QEdit::init(HMODULE hm)
 {
@@ -37,6 +45,11 @@ int QEdit::init(HMODULE hm)
         if (pfun)++count;
         QEDSetTextA = (QEDSETTEXTA)pfun;
 
+        fName = "QEDSetText";
+        pfun = QEXPORTFUNC::QExportFunction(hm, fName);
+        if (pfun)++count;
+        QEDSetText = (QEDSETTEXT)pfun;
+
         fName = "QEDSetFontName";
         pfun = QEXPORTFUNC::QExportFunction(hm, fName);
         if (pfun)++count;
@@ -53,8 +66,18 @@ int QEdit::init(HMODULE hm)
         if (pfun)++count;
         QEDSetFontBrush = (QEDSETFONTBRUSH)pfun;
 
+        fName = __FUNCTINNAME_QED_STR(GetText);
+        pfun = QEXPORTFUNC::QExportFunction(hm, fName);
+        if (pfun)++count;
+        QEXPORTFUNC::__FUNADDRESS(__FUNCTINNAME_QED(GetText), pfun);
+
+        fName = __FUNCTINNAME_QED_STR(SetChangeEvent);
+        pfun = QEXPORTFUNC::QExportFunction(hm, fName);
+        if (pfun)++count;
+        QEXPORTFUNC::__FUNADDRESS(__FUNCTINNAME_QED(SetChangeEvent), pfun);
 
 
+        m_hm = hm;
         DLLImportQWND::init(hm);
         DebugOut("QEdit : import %d function", count);
         return count;

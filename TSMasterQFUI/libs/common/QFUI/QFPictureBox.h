@@ -13,7 +13,7 @@ class QPictureBox:public DLLImportQWND
     QPictureBox(HDC winddc,const QRect& rf);
     virtual ~QPictureBox();
     void LoadPicture(const std::wstring& path);
-    inline void SetTransparency(unsigned char apha);
+    void SetTransparency(unsigned char apha);
     virtual int init(HMODULE hm);
 
 

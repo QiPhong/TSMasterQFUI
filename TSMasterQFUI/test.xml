@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<!--奇风UI窗口布局文件-->
+<!--窗口布局主体必须QWMange（目前有且只能有一个），name随意设置-->
+<QWMange name="" Rect="(5,5,1484,822)">
+    <!--每一个并行节点都是一个控件，控件节点元素名为：控件名，如按钮：QButton-->
+    <!--控件属性有name：可以随意设置，尽量控件之间不要相同；Rect：控件矩形-->
+    <QFSelect CurrentItem="5" FontColor="0xff9c0000" PopDialogHeight="180" PopDialogWidth="90" Rect="(12,203,200,56)" SelectChangeEvent="SelectChange" fontName="黑体" fontSize="16" name="QFSelect1">
+        <Items>
+            <Item fcolorD="1" fcolor1="0xffc0ff00" fcolor2="0xff0084ce" colorD="0" color1="0xff67ffff" color2="0xffffff85" value="TEST"/>
+            <Item fcolorD="1" fcolor1="0xffc0ff00" fcolor2="0xff0084ce" colorD="0" color1="0xff67ffff" color2="0xffffff85" value="TEST1"/>
+            <Item fcolorD="1" fcolor1="0xffc0ff00" fcolor2="0xff0084ce" colorD="0" color1="0xff67ffff" color2="0xffffff85" value="TEST2"/>
+            <Item fcolorD="1" fcolor1="0xffc0ff00" fcolor2="0xff0084ce" colorD="0" color1="0xff67ffff" color2="0xffffff85" value="TEST3"/>
+            <Item fcolorD="0" fcolor1="0xff000000" fcolor2="0xff000000" colorD="0" color1="0xffffffff" color2="0xffffffff" value="TEST4"/>
+            <Item fcolorD="1" fcolor1="0xff43ffff" fcolor2="0xff0eebc0" colorD="1" color1="0xffe5fd00" color2="0xffff4d00" value="测试"/>
+        </Items>
+    </QFSelect>
+    <QFSwitch IsMutex="false" Rect="(11,271,122,28)" State="true" StateChangeEvent="SwitchStateChange" name="QFSwitch1"/>
+    <QFSlider Direction="1" IsSegmentation="true" RailColor="0xff00f0f0" RailRatio="0.321429" Rect="(148,267,39,409)" ValueChangeEvent="Sliding" backgroundColor="0xffffffff" currentValue="60" maxValue="100" minValue="0" name="QFSlider1">
+        <Items>
+            <SegmValue value="0.000000"/>
+            <SegmValue value="20.000000"/>
+            <SegmValue value="40.000000"/>
+            <SegmValue value="60.000000"/>
+            <SegmValue value="100.000000"/>
+        </Items>
+    </QFSlider>
+    <QFProgress CurrentValue="56.632656" DecimalPlaces="0" Direction="0" FontColor="0xff00e100" FontSize="32" LineTypeColor="0xffff0000" Rect="(42,12,133,106)" RingProgressThickness="20" RingTypeColor1="0xff00a6d8" RingTypeColor2="0xffc9ff00" Type="1" name="QFProgress1"/>
+    <QFColorBox ColorChangeEvent="ColorBoxChange" Rect="(20,124,213,36)" fontName="黑体" fontSize="20" name="QFColorBox1"/>
+    <QFColorBox ColorChangeEvent="ColorBoxChange" Rect="(18,162,213,36)" fontName="黑体" fontSize="20" name="QFColorBox2"/>
+    <QFTabs Rect="(257,4,1107,687)" name="QFTabs1">
+        <Tables>
+            <Table text="按钮和编辑框" ico="C:\Users\Administrator\Desktop\60173_example_icon.png">
+                <QFButton Rect="(43,40,112,56)" Text="示例按钮1" name="QFButton_test1" onClick="exampleBT1Onclick"/>
+                <QFPButton Rect="(36,112,106,70)" Text="示例按钮2" bkColor="0xff0029d3" fontColor="0xffb4f800" fontSize="16" name="QFPButton_test2" onClick="exampleBT2Onclick"/>
+                <QFEdit Rect="(185,53,224,48)" Text="Test" TextChange="exampleEdit1OnContextChange" name="QFEdit_Test1"/>
+                <QFPictureBox Rect="(598,96,293,130)" name="QFPictureBox1" path="C:\Users\Administrator\Desktop\R-C.jpg"/>
+                <QFStaticText Rect="(583,29,92,48)" Text="图片框：" name="QFStaticText7"/>
+            </Table>
+            <Table text="报表框" ico="C:\Users\Administrator\Desktop\60173_example_icon.png">
+                <QFReportForm Rect="(7,6,576,426)" name="QFReportForm_test1">
+                    <FTitle>
+                        <FItem text="test1" width="80"/>
+                        <FItem text="测试1" width="150"/>
+                    </FTitle>
+                </QFReportForm>
+                <QFStaticText Rect="(605,7,66,32)" Text="索引：" name="QFStaticText1"/>
+                <QFEdit Rect="(681,8,119,29)" Text="-1" name="QFEdit_RP_ADDC_index"/>
+                <QFStaticText Rect="(607,46,64,32)" Text="宽度：" name="QFStaticText2"/>
+                <QFEdit Rect="(681,45,119,29)" Text="80" name="QFEdit_RP_ADDC_W"/>
+                <QFStaticText Rect="(609,87,62,32)" Text="内容：" name="QFStaticText3"/>
+                <QFEdit Rect="(681,89,119,29)" Text="新的列" name="QFEdit_RP_ADDC_CONTEXT"/>
+                <QFPButton Rect="(819,12,174,51)" Text="增加一列" fontColor="0xffa0d500" fontName="黑体" fontSize="16" name="QFPButton_RP_ADDC_ADD" onClick="RPADDCBTOnclick"/>
+                <QFPButton Rect="(819,75,174,51)" Text="移除一列" fontColor="0xffa0d500" fontSize="16" name="QFPButton_RP_RMC_BT" onClick="RPRMCBTOnclick"/>
+                <QFStaticText Rect="(609,163,72,32)" Text="行索引：" name="QFStaticText4"/>
+                <QFStaticText Rect="(609,260,58,32)" Text="内容：" name="QFStaticText5"/>
+                <QFEdit Rect="(690,163,64,30)" Text="-1" name="QFEdit_RP_ADDI_INDEXH"/>
+                <QFEdit Rect="(690,260,118,30)" Text="内容" name="QFEdit_RP_ADDI_CONTEXT"/>
+                <QFStaticText Rect="(609,210,72,32)" Text="列索引：" name="QFStaticText6"/>
+                <QFEdit Rect="(690,210,64,32)" Text="0" name="QFEdit_RP_ADDI_INDEXV"/>
+                <QFPButton Rect="(819,163,174,51)" Text="增加一行" bkColor="0xff3abe50" fontColor="0xffa4db00" fontName="黑体" fontSize="16" name="QFPButton__RP_ADDI_BT" onClick="RPADDIBTOnclick"/>
+                <QFPButton Rect="(819,218,174,51)" Text="更新内容" bkColor="0xfffbffff" fontSize="16" name="QFPButton_RP_UPDATEI_BT" onClick="RPUopdateIBTOnclick"/>
+                <QFPButton Rect="(819,269,174,51)" Text="删除一行" bkColor="0xffff522b" fontColor="0xff00e000" fontSize="16" name="QFPButton1" onClick="RPRMIBTOnclick"/>
+            </Table>
+            <Table text="进度条" ico="C:\Users\Administrator\Desktop\60173_example_icon.png">
+                <QFProgressBarCar Rect="(63,57,338,128)" fontColor="0xff000000" fontSize="16" name="QFProgressBarCar_PRO" posit="60.714287"/>
+                <QFProgress FontSize="35" Rect="(97,202,198,183)" RingProgressThickness="50" Type="1" name="QFProgress_PRO2"/>
+                <QFSlider Rect="(26,614,1032,44)" ValueChangeEvent="PROSliding" currentValue="60" maxValue="100" name="QFSlider_PRO"/>
+                <QFProgress Direction="0" FontSize="16" Rect="(24,443,316,24)" Type="0" name="QFProgress_PRO3"/>
+                <QFStaticText Rect="(434,55,87,25)" Text="字体颜色：" name="QFStaticText8"/>
+                <QFColorBox ColorChangeEvent="PROCarColorBoxChange" Rect="(526,55,141,25)" fontSize="16" name="QFColorBox_PRO_CAR"/>
+                <QFStaticText Rect="(388,236,94,30)" Text="字体颜色：" name="QFStaticText9"/>
+                <QFColorBox ColorChangeEvent="PRO2fColorBoxChange" Rect="(484,236,144,33)" fontSize="16" name="QFColorBox_PRO2_F"/>
+                <QFStaticText Rect="(388,275,94,30)" Text="颜色1：" name="QFStaticText10"/>
+                <QFStaticText Rect="(388,309,94,30)" Text="颜色2：" name="QFStaticText11"/>
+                <QFColorBox ColorChangeEvent="PRO2ColorBoxChange" Rect="(484,276,144,33)" fontSize="16" name="QFColorBox_PRO2_C1"/>
+                <QFColorBox ColorChangeEvent="PRO2ColorBoxChange" Rect="(484,309,144,33)" fontSize="16" name="QFColorBox_PRO2_C2"/>
+                <QFStaticText Rect="(461,437,102,26)" Text="字体颜色：" name="QFStaticText12"/>
+                <QFStaticText Rect="(461,471,104,28)" Text="进度条颜色：" name="QFStaticText13"/>
+                <QFColorBox ColorChangeEvent="PRO3fColorBoxChange" Rect="(570,437,108,32)" fontSize="16" name="QFColorBox_PRO34_F"/>
+                <QFColorBox ColorChangeEvent="PRO3ColorBoxChange" Rect="(570,467,108,32)" fontSize="16" name="QFColorBox_PRO34_C"/>
+                <QFProgress Direction="1" FontSize="16" Rect="(373,352,33,249)" Type="0" name="QFProgress_PRO4"/>
+            </Table>
+            <Table text="直线图" ico="C:\Users\Administrator\Desktop\60173_example_icon.png">
+                <QFLineChart LegWidth="60" Rect="(21,22,657,587)" name="QFLineChart_LC"/>
+                <QFStaticText Rect="(688,24,351,29)" Text="增加曲线" name="QFStaticText14"/>
+                <QFStaticText Rect="(694,62,47,24)" Text="X：" name="QFStaticText15"/>
+                <QFEdit Rect="(745,60,65,27)" Text="" name="QFEdit_LCX1"/>
+                <QFStaticText Rect="(823,62,47,24)" Text="Y：" name="QFStaticText16"/>
+                <QFEdit Rect="(880,60,65,27)" Text="" name="QFEdit_LCY1"/>
+                <QFPButton Rect="(955,53,87,42)" Text="增加一点" fontColor="0xff00e800" fontSize="16" name="QFPButton_LC_ADDBT" onClick="LCAddPtBTOnclick"/>
+                <QFReportForm Rect="(693,104,344,205)" name="QFReportForm_LC_RF">
+                    <FTitle>
+                        <FItem text="X" width="150"/>
+                        <FItem text="Y" width="150"/>
+                    </FTitle>
+                </QFReportForm>
+                <QFPButton Rect="(696,349,339,40)" Text="加入曲线" fontColor="0xff00ff00" fontSize="16" name="QFPButton_LC_ADDCURVE" onClick="LCAddCurveBTOnclick"/>
+                <QFStaticText Rect="(695,313,100,31)" Text="曲线颜色：" name="QFStaticText17"/>
+                <QFColorBox Rect="(800,314,217,32)" fontSize="20" name="QFColorBox_LC_COLOR"/>
+                <QFStaticText Rect="(688,390,351,29)" Text="移除曲线" name="QFStaticText18"/>
+                <QFStaticText Rect="(688,429,182,31)" Text="曲线索引(看图例顺序)：" name="QFStaticText19"/>
+                <QFEdit Rect="(876,431,108,28)" Text="" name="QFEdit_LC_CURVE_INDEX"/>
+                <QFPButton Rect="(983,427,56,37)" Text="移除" fontColor="0xff00cb00" name="QFPButton_LC_RMBT" onClick="LCRmoveBTOnclick"/>
+                <QFStaticText Rect="(688,476,351,29)" Text="修改曲线" name="QFStaticText20"/>
+                <QFStaticText Rect="(688,513,182,31)" Text="曲线索引(看图例顺序)：" name="QFStaticText21"/>
+                <QFEdit Rect="(876,513,108,28)" Text="" name="QFEdit_LC_UPDATE_INDEX"/>
+                <QFStaticText Rect="(688,552,87,25)" Text="是否可视：" name="QFStaticText22"/>
+                <QFSwitch Rect="(782,553,72,23)" name="QFSwitch_LC_ISVISUAL"/>
+                <QFPButton Rect="(859,547,66,32)" Text="修改" fontColor="0xff00ff00" name="QFPButton_LC_UPDATE_BT" onClick="LCUpDateBTOnclick"/>
+                <QFStaticText Rect="(688,586,45,24)" Text="X：" name="QFStaticText23"/>
+                <QFEdit Rect="(740,586,72,24)" Text="" name="QFEdit_LCX2"/>
+                <QFStaticText Rect="(814,586,45,24)" Text="Y：" name="QFStaticText24"/>
+                <QFEdit Rect="(868,587,72,24)" Text="" name="QFEdit_LCY2"/>
+                <QFPButton Rect="(692,618,96,39)" Text="曲线增加一点" fontColor="0xff00d300" name="QFPButton_LC_CURVE_ADDP" onClick="LCCurveAddPtBTOnclick"/>
+                <QFPButton Rect="(1042,117,58,104)" Text="清空" bkColor="0xfffaffff" fontSize="16" name="QFPButton_LC_CLEARBT" onClick="LCClearBTOnclick"/>
+            </Table>
+            <Table text="宁德柱状图" ico="C:\Users\Administrator\Desktop\60173_example_icon.png">
+                <QFStaticText Rect="(710,24,72,29)" Text="组ID：" name="QFStaticText25"/>
+                <QFEdit Rect="(786,24,103,29)" Text="" name="QFEdit_CATLBC_GID1"/>
+                <QFPButton Rect="(897,0,96,40)" Text="插入一组" bkColor="0xffffffff" fontColor="0xff000000" fontSize="16" name="QFPButton_CATLBC_INSG" onClick="CATLBCBTOnclick"/>
+                <QFPButton Rect="(897,37,96,40)" Text="移除一组" bkColor="0xffffffff" fontColor="0xff000000" fontSize="16" name="QFPButton_CATLBC_RMG" onClick="CATLBCBTOnclick"/>
+                <QFStaticText Rect="(710,80,329,34)" Text="插入/移除数据" name="QFStaticText26"/>
+                <QFStaticText Rect="(710,125,60,26)" Text="组ID：" name="QFStaticText27"/>
+                <QFEdit Rect="(774,125,78,26)" Text="" name="QFEdit_CATLBC_GID2"/>
+                <QFStaticText Rect="(853,125,53,26)" Text="柱ID：" name="QFStaticText28"/>
+                <QFEdit Rect="(909,125,81,26)" Text="" name="QFEdit_CATLBC_BCID"/>
+                <QFStaticText Rect="(710,161,60,26)" Text="数据：" name="QFStaticText29"/>
+                <QFEdit Rect="(774,159,150,26)" Text="" name="QFEdit_CATLBC_DATA"/>
+                <QFStaticText Rect="(710,200,96,26)" Text="柱体颜色：" name="QFStaticText30"/>
+                <QFColorBox Rect="(814,200,176,26)" fontSize="20" name="QFColorBox_CATLBC_BCC"/>
+                <QFStaticText Rect="(710,236,96,26)" Text="字体颜色：" name="QFStaticText31"/>
+                <QFColorBox Rect="(814,236,176,26)" fontSize="20" name="QFColorBox_CATLBC_FC"/>
+                <QFStaticText Rect="(710,272,96,26)" Text="标记字符：" name="QFStaticText32"/>
+                <QFEdit Rect="(819,272,164,26)" Text="" name="QFEdit_CATLBC_STR"/>
+                <QFPButton Rect="(710,310,128,48)" Text="插入数据" bkColor="0xff00ffff" fontSize="16" name="QFPButton_CATLBC_INSD" onClick="CATLBCBTOnclick"/>
+                <QFPButton Rect="(844,310,128,48)" Text="移除数据" bkColor="0xff3e87ff" fontSize="16" name="QFPButton_CATLBC_RMD" onClick="CATLBCBTOnclick"/>
+                <QFPButton Rect="(710,360,128,48)" Text="修改数值" bkColor="0xffffff5b" fontSize="16" name="QFPButton_CATLBC_UpDateD" onClick="CATLBCBTOnclick"/>
+                <QFPButton Rect="(844,360,128,48)" Text="修改柱体颜色" bkColor="0xffff1b82" fontSize="16" name="QFPButton_CATLBC_UpDateBCC" onClick="CATLBCBTOnclick"/>
+                <QFPButton Rect="(710,407,128,48)" Text="修改标记字符" bkColor="0xffffce00" fontSize="16" name="QFPButton_CATLBC_UpDateSTR" onClick="CATLBCBTOnclick"/>
+                <QFPButton Rect="(844,407,126,48)" Text="修改字符颜色" bkColor="0xff4bff00" fontSize="16" name="QFPButton_CATLBC_UpDateSTRC" onClick="CATLBCBTOnclick"/>
+            </Table>
+            <Table text="宁德温度图表" ico="C:\Users\Administrator\Desktop\60173_example_icon.png">
+                <QFStaticText Rect="(729,48,65,24)" Text="组ID：" name="QFStaticText33"/>
+                <QFEdit Rect="(797,48,96,24)" Text="-1" name="QFEdit1_CATLP_G1"/>
+                <QFPButton Rect="(903,10,96,48)" Text="插入一组" bkColor="0xffffffff" fontSize="16" name="QFPButton_CATLP_INSG" onClick="CATLPBTOnclick"/>
+                <QFPButton Rect="(903,58,96,48)" Text="移除一组" bkColor="0xedffffff" fontSize="16" name="QFPButton_CATLP_RMG" onClick="CATLPBTOnclick"/>
+                <QFStaticText Rect="(729,114,296,34)" Text="修改温度单元" name="QFStaticText34"/>
+                <QFStaticText Rect="(729,158,64,24)" Text="组ID：" name="QFStaticText35"/>
+                <QFEdit Rect="(801,158,64,24)" Text="" name="QFEdit1_CATLP_G2"/>
+                <QFStaticText Rect="(871,158,72,24)" Text="单元ID：" name="QFStaticText36"/>
+                <QFEdit Rect="(950,158,72,24)" Text="" name="QFEdit1_CATLP_U1"/>
+                <QFStaticText Rect="(729,197,96,24)" Text="背景颜色：" name="QFStaticText37"/>
+                <QFColorBox Rect="(835,197,128,24)" fontSize="16" name="QFColorBox_CATLP_C"/>
+                <QFStaticText Rect="(729,225,96,24)" Text="字符颜色：" name="QFStaticText38"/>
+                <QFColorBox Rect="(835,225,128,24)" fontSize="16" name="QFColorBox_CATLP_FC"/>
+                <QFStaticText Rect="(729,257,96,24)" Text="字符：" name="QFStaticText39"/>
+                <QFEdit Rect="(835,257,190,24)" Text="" name="QFEdit1_CATLP_STR"/>
+                <QFPButton Rect="(729,290,128,48)" Text="插入一个单元" bkColor="0xf2ffffff" fontSize="16" name="QFPButton_CATLP_INSU" onClick="CATLPBTOnclick"/>
+                <QFPButton Rect="(859,290,128,48)" Text="移除一个单元" bkColor="0xf5ffffff" fontSize="16" name="QFPButton_CATLP_RMU" onClick="CATLPBTOnclick"/>
+                <QFPButton Rect="(729,340,128,48)" Text="修改单元颜色" bkColor="0xe1ffffff" fontSize="16" name="QFPButton_CATLP_UDC" onClick="CATLPBTOnclick"/>
+                <QFPButton Rect="(859,340,128,48)" Text="修改单元字符" bkColor="0xedffffff" fontSize="16" name="QFPButton_CATLP_UDS" onClick="CATLPBTOnclick"/>
+                <QFPButton Rect="(729,392,128,48)" Text="修改字符颜色" bkColor="0xf6ffffff" fontSize="16" name="QFPButton_CATLP_UDSC" onClick="CATLPBTOnclick"/>
+                <QFStaticText Rect="(729,451,296,34)" Text="修改一行单元个数" name="QFStaticText40"/>
+                <QFStaticText Rect="(729,493,64,24)" Text="组ID：" name="QFStaticText41"/>
+                <QFEdit Rect="(800,493,128,24)" Text="0" name="QFEdit1_CATLP_G3"/>
+                <QFStaticText Rect="(729,524,64,24)" Text="个数：" name="QFStaticText42"/>
+                <QFEdit Rect="(800,524,128,24)" Text="" name="QFEdit1_CATLP_LCOUNT"/>
+                <QFPButton Rect="(729,554,201,49)" Text="修改" fontSize="18" name="QFPButton_CATLP_UDLC" onClick="CATLPBTOnclick"/>
+                <QFCATLTempeChart Rect="(8,7,717,644)" name="QFCATLTempeChart_CATLP"/>
+            </Table>
+            <Table text="抽屉控件" ico="C:\Users\Administrator\Desktop\60173_example_icon.png">
+                <QFDrawer Rect="(12,14,360,638)" name="QFDrawer_DRAW">
+                    <Items>
+                        <Category name="坤坤">
+                            <Subkey name="唱"/>
+                            <Subkey name="跳"/>
+                            <Subkey name="rap"/>
+                            <Subkey name="篮球"/>
+                        </Category>
+                        <Category name="分组2">
+                            <Subkey name="分组2的项目1"/>
+                        </Category>
+                        <Category name="分组3">
+                            <Subkey name="分组3的项目1"/>
+                            <Subkey name="分组3的项目2"/>
+                            <Subkey name="分组3的项目3"/>
+                            <Subkey name="分组3的项目4"/>
+                            <Subkey name="分组3的项目5"/>
+                            <Subkey name="分组3的项目6"/>
+                        </Category>
+                    </Items>
+                </QFDrawer>
+                <QFStaticText Rect="(380,23,72,24)" Text="组ID：" backgroundColor="0x0" name="QFStaticText43"/>
+                <QFEdit Rect="(461,23,193,24)" Text="" name="QFEdit_DRAW_GID"/>
+                <QFStaticText Rect="(380,54,72,24)" Text="项目ID：" backgroundColor="0x0" name="QFStaticText44"/>
+                <QFEdit Rect="(461,54,193,24)" Text="" name="QFEdit_ITEM_GID"/>
+                <QFStaticText Rect="(380,96,72,24)" Text="内容：" backgroundColor="0x0" name="QFStaticText45"/>
+                <QFEdit Rect="(461,94,193,24)" Text="" name="QFEdit_DRAW_CONTEXT"/>
+                <QFPButton Rect="(380,133,117,47)" Text="新增分组" bkColor="0xff04ffff" fontSize="16" name="QFPButton_DRAW_ADDG" onClick="DrawerBTOnclick"/>
+                <QFPButton Rect="(501,133,117,47)" Text="移除分组" bkColor="0xff00ffff" fontSize="16" name="QFPButton_DRAW_RMG" onClick="DrawerBTOnclick"/>
+                <QFPButton Rect="(380,193,117,47)" Text="新增项目" bkColor="0xff00ffff" fontSize="16" name="QFPButton_DRAW_ADDI" onClick="DrawerBTOnclick"/>
+                <QFPButton Rect="(501,193,117,47)" Text="移除项目" bkColor="0xff00ffff" fontSize="16" name="QFPButton_DRAW_RMI" onClick="DrawerBTOnclick"/>
+                <QFPButton Rect="(624,133,117,47)" Text="修改分组" bkColor="0xff00ffff" fontSize="16" name="QFPButton_DRAW_UDG" onClick="DrawerBTOnclick"/>
+                <QFPButton Rect="(624,193,117,47)" Text="修改项目" bkColor="0xff00ffff" fontSize="16" name="QFPButton_DRAW_UDI" onClick="DrawerBTOnclick"/>
+            </Table>
+        </Tables>
+    </QFTabs>
+</QWMange>

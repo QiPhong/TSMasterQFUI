@@ -12,7 +12,7 @@ class QProgressBarCar:public DLLImportQWND
     static std::function<double(QWND*)> QFBCGetPercentage;
     static std::function<void(QWND*,double)> QFBCSetFontSize;
     static std::function<void(QWND*,const wchar_t*)> QFBCSetFontName;
-    static std::function<void(QWND*,int)> QFBCSetFontColor;
+    static std::function<void(QWND*, unsigned int)> QFBCSetFontColor;
     static std::function<void(QWND*,bool)> QFBCIsShowDec;
     static std::function<void(QWND*,QBrush*)> QFBCSetFillBrush;
 
@@ -24,7 +24,7 @@ class QProgressBarCar:public DLLImportQWND
     virtual double GetPercentage();
     virtual void SetFontSize(double size);
     virtual void SetFontName(const wchar_t* name);
-    virtual void SetFontColor(int colo);
+    virtual void SetFontColor(unsigned int colo);
     virtual void IsShowDec(bool isShow);
     virtual void SetFillBrush(QBrush* pBrush);
     public:

@@ -1,18 +1,29 @@
 #pragma once
 #include "QFUIWND.h"
 #include "QFTypes.h"
-
+#include "QFMsg.h"
+#define __DefineFun(type,name) static type name
+#define __GDefineFun(cname,type,name) type cname::name=NULL
+#define __QDefineType(name) name##_Type
+#define __MembersDef(name) __DefineFun(__QDefineType(name),name)
+#define __FunTypeDef(fName) fName##_Type
 typedef PVOID(*GET3DPROCADDRESS)(const char*);
 namespace QEXPORTFUNC{
+    template<typename T1>
+    void __FUNADDRESS(T1& t, void* pfun)
+    {
+
+        t = (T1)(pfun);
+    }
     inline void* QExportFunction(HMODULE hm,const char* fName)
     {
         void* pfun = (void*)GetProcAddress(hm,fName);
         if(pfun){
-            DebugOut("QWMange : 导入 <%s> 函数成功",fName);
+            DebugOut("QExportFunction : 导入 <%s> 函数成功",fName);
         }
         else{
 
-            DebugOut("QWMange : 导入 <%s> 函数失败",fName);
+            DebugOut("QExportFunction : 导入 <%s> 函数失败",fName);
         }
         return pfun;
     }
@@ -45,7 +56,9 @@ typedef void (*SETLOCATION)(QWND* , QPoint*);
 typedef void (*SETSIZE)(QWND*, QSize*, HDC);
 typedef BOOL (*CONTAINS)(QWND*,int,int);
 typedef QRect (*GETRECT)(QWND*);
-
+typedef void(*SETQWNDNAME)(QWND*,const char*);
+typedef const char* (*GETQWNDNAME)(QWND*);
+typedef QDWORD(*TRANSFERMESSAGE)(QWND*, QDWORD, QDWORD, QDWORD, QDWORD);
 
 class DLLImportQWND:public QWND
 {
@@ -89,6 +102,9 @@ class DLLImportQWND:public QWND
     static GETRECT GetRect_FUN;
     static VOID_QWND DeleteQWMage_FUN;
 
+    static SETQWNDNAME SetQWNDName_FUN;
+    static TRANSFERMESSAGE TransferMessage_FUN;
+    static GETQWNDNAME GetQWNDName_FUN;
 
     
     public:
@@ -142,9 +158,19 @@ class DLLImportQWND:public QWND
     //失去焦点
     virtual void killFocus() {};
 
-
+    /*
+    *传递消息
+    * 返回值和参数为自定义
+    * 参数一：消息ID
+    * 参数二：左参数
+    * 参数三：有参数
+    * 参数四：附加参数
+    */
+    virtual  QDWORD TransferMessage(QDWORD msgID, QDWORD LParam, QDWORD RParam, QDWORD AddParam);
+    void SetQWNDName(const char* name);
+    std::string GetQWNDName();
     //基础属性
-    inline virtual void SetHostHand(HWND hwnd);
+    virtual void SetHostHand(HWND hwnd);
 
     QRect GetRect();
 };

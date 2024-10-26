@@ -1,4 +1,8 @@
 #include "QFButton.h"
+
+#define __FUNCTINNAME(name)QFB##name
+#define __FUNCTINNAME_STR(name) "QFB" #name
+#define __GDefineFun_(name) __GDefineFun(QButton,__QDefineType(name),name)
 HMODULE QButton::m_hm = NULL;
 __QFBSETFONTNAME QButton::QFBSetFontName = NULL;
 __QFBSETFONTSIZE QButton::QFBSetFontSize = NULL;
@@ -6,6 +10,8 @@ __QFBSETTEXTALGN QButton::QFBSetTextAlgn = NULL;
 __QFBSETTEXTALLGN QButton::QFBSetTextAllgn = NULL;
 __QFBSETCLICKEVENT QButton::QFBSetClickEvent = NULL;
 __QFBSETTEXT QButton::QFBSetText = NULL;
+
+__GDefineFun_(QFBGetText);
 QButton::QButton(HDC winddc,const QRect& rf):DLLImportQWND(winddc,rf)
 {
 
@@ -73,8 +79,18 @@ int QButton::init(HMODULE hm)
         if(pfun)++count;
         QFBSetClickEvent = (__QFBSETCLICKEVENT)pfun;
 
+        fName = "QFBSetText";
+        pfun = QEXPORTFUNC::QExportFunction(hm, fName);
+        if (pfun)++count;
+        QFBSetText = (__QFBSETTEXT)pfun;
 
+        fName = __FUNCTINNAME_STR(GetText);
+        pfun = QEXPORTFUNC::QExportFunction(hm, fName);
+        if (pfun)++count;
+        /*__FUNADDRESS_QDW(SetFontName);*/
+        QEXPORTFUNC::__FUNADDRESS(__FUNCTINNAME(GetText), pfun);
 
+        m_hm = hm;
         DLLImportQWND::init(hm);
         DebugOut("QButton :import %d function",count);
         return count;
@@ -85,4 +101,9 @@ int QButton::init(HMODULE hm)
 void QButton::SetClickEvent(QFBUTTONCLICK fun)
 {
     QFBSetClickEvent(qwm,fun);
+}
+
+std::wstring QButton::GetText()
+{
+    return std::wstring(__FUNCTINNAME(GetText)(qwm));
 }

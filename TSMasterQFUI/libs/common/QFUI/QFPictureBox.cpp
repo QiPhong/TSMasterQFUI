@@ -15,7 +15,7 @@ void QPictureBox::LoadPicture(const std::wstring& path)
 {
     QPBLoadPicture(qwm, path.c_str());
 }
-inline void QPictureBox::SetTransparency(unsigned char apha)
+ void QPictureBox::SetTransparency(unsigned char apha)
 {
     QPBSetTransparency(qwm, apha);
 

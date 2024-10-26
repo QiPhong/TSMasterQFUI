@@ -11,6 +11,7 @@ typedef void (*__LONGLONG__FUN)(QWND*, long long);
 typedef int (*__WCHAR_T__INT__FUN__INT)(QWND*, const wchar_t*,int);
 typedef void (*__INT__ULONG__FUN)(QWND*, int,unsigned long);
 typedef void (*__INT__WCHAR_T__FUN)(QWND*, int, const wchar_t*);
+typedef void (*__INT__BOOL__FUN)(QWND*, int, bool);
 
 #define DEF_FUN_NAME(name) QFLC##name
 
@@ -21,6 +22,7 @@ class QLineChart :public DLLImportQWND
 	static __QFLCCURVEINSERTPOINT DEF_FUN_NAME(CurveInsertPoint);
     static __INT__FUN DEF_FUN_NAME(SetFontSize);
     static __INT__FUN DEF_FUN_NAME(SetTextAlgn);
+    static __INT__FUN DEF_FUN_NAME(RemoveCurve);
     static __INT__INT__FUN DEF_FUN_NAME(SetTextAlgnii);
     static __INT__FUN DEF_FUN_NAME(SetTextAllgn);
     static __INT__FUN DEF_FUN_NAME(SetLegFontSize);
@@ -38,6 +40,8 @@ class QLineChart :public DLLImportQWND
     static __WCHAR_T__INT__FUN__INT DEF_FUN_NAME(FindCurve);
     static __INT__ULONG__FUN DEF_FUN_NAME(SetCurveColor); 
     static __INT__WCHAR_T__FUN DEF_FUN_NAME(SetCurveName);
+    static __INT__BOOL__FUN DEF_FUN_NAME(SetCurveVisible);
+    static __INT__FUN DEF_FUN_NAME(SetBackground);
 public:
 	QLineChart(HDC winddc, const QRect& rf);
 	virtual ~QLineChart();
@@ -64,6 +68,9 @@ public:
     int FindCurve(const wchar_t* name, int start = 0);//查找曲线，名字和开始查找的索引，返回找到的索引，找不到返回-1
     void SetCurveColor(int index, unsigned long color);
     void SetCurveName(int index, const wchar_t* name);
+    void SetCurveVisible(int index, bool isVisible);
+    void RemoveCurve(int index);
+    void SetBackground(QBrush* brush);
 
 };
 
